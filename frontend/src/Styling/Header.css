@@ -1,0 +1,25 @@
+.Header {
+    width: 100vw;
+    height: 8vh;
+    background-color: orange;
+    display: flex;
+}
+
+.logo-section {
+    background-color: red;
+    width: 15vw;
+    height: 8vh;
+}
+
+.searchbar-section {
+    background-color: black;
+    width: 55vw;
+    height: 8vh;
+}
+
+.account-section {
+    background-color: red;
+    width: 30vw;
+    height: 8vh;
+    display: flex;
+}
