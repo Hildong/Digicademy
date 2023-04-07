@@ -1,0 +1,21 @@
+.upper-home-section {
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.upper-home-section-div {
+    height: 70vh;
+    width: 70vw;
+    background-color: red;
+    margin-top: 5vh;
+}
+
+.middle-home-section {
+    
+}
+
+.middle-home-section-div {
+
+}
