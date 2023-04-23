@@ -1,21 +1,59 @@
-.upper-home-section {
+.upper-home-section, .middle-home-section, .lower-home-section {
     height: 92vh;
     width: 100vw;
     display: flex;
     justify-content: center;
 }
 
-.upper-home-section-div {
+.upper-home-section-div, .middle-home-section-div, .lower-home-section-div {
     height: 70vh;
     width: 70vw;
-    background-color: red;
     margin-top: 5vh;
 }
 
-.middle-home-section {
-    
+.upper-home-section-div {
+    border: 0.1px solid black;
 }
 
-.middle-home-section-div {
+.home-page-category-button {
+    border-radius: 12px;
+    border: 1px solid black;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 1.5rem;
+    background-color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
 
+.popular-courses-parent-div {
+    border: 0.1px solid rgba(83, 83, 83, 0.15);
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    padding-top: 5vh;
+    margin-top: 5vh;
+}
+
+.popular-courses-child-div {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    height: 300px;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.course-div {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-right: 10px;
+}
+
+.course-image {
+    width: 300px;
+    height: 200px;
 }
