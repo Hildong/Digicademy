@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import validateJWT from '../JWT/Auth';
 import '../Styling/Navbar.css';
 
 function Navbar() {
@@ -11,7 +12,12 @@ function Navbar() {
     const [showLogOrSignin, setShowLogOrSignin] = useState("none");
 
     useEffect(() => {
-        console.log("I Only run once (When the component gets mounted)")
+        validateJWT
+        .then(data => {
+            console.log(data)
+            setLoggedIn(data)
+        })
+        console.log(loggedIn)
     }, []);
 
     const handleLogOrSigninClick = () => {

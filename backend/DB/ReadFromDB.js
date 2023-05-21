@@ -10,7 +10,7 @@ async function customerExists(email) {
     return !!data; //If null, return false, otherwise return true
 }
 
-async function loginUser(email, pwd) {
+async function loginUser(email, pwd, res) {
     const data = await customerModel.findOne({email})
     if(!data) return {exists: false}
 
@@ -20,7 +20,7 @@ async function loginUser(email, pwd) {
             { email },
             process.env.ACCESS_TOKEN_SECRET,
             {
-            expiresIn: "15m",
+            expiresIn: "10s",
             }
         );
 

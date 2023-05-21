@@ -13,13 +13,13 @@ module.exports = app => {
     })
 
     app.post("/login", async (req, res) => {
-        const userLoginInfo = await ReadFromDB.loginUser(req.body.email, req.body.password);
+        const userLoginInfo = await ReadFromDB.loginUser(req.body.email, req.body.password, res);
         if(!userLoginInfo.exists) {
             res.status(400).send("Email doesn't exist") //HTTP 400 status for bad request
         } else if(!userLoginInfo.authenticated) {
             res.status(400).send("Login information not valid") //HTTP 400 status for bad request
         } else {
-            res.cookie("auth", userLoginInfo.accessToken, {httpOnly: true})
+            await res.cookie("auth", userLoginInfo.accessToken, {httpOnly: true})
             res.json({authenticated: userLoginInfo.authenticated, exists: userLoginInfo.exists})
         }
         

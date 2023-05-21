@@ -28,6 +28,7 @@ app.use(bodyParser.json())
 
 //Import routes from routes folder and file
 require("./API/post.js")(app, bodyParser);
+require("./API/get.js")(app, bodyParser);
 
 app.get("/", (req, res) => {
     res.send("Hello man")

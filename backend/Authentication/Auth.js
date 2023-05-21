@@ -1,30 +1,22 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const authToken = async (req, res, next) => {
-  // Option 1
-  // const authHeader = req.headers["authorization"];
-  // const token = authHeader && authHeader.split(" ")[1]; // Bearer Token
+const authToken = (req) => {
 
-  // Option 2
-  const token = req.header("x-auth-token");
-
-  // If token not found, send error message
+  // Save httponly cookie to variable
+  const token = req.cookies.auth
+  // If token not found, send false
   if (!token) {
-    res.status(401).json({
-        msg: "Token not found"
-    });
+    return false
   }
-
-  // Authenticate token
+  
   try {
-    const user = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = user.email;
-    next();
-  } catch (error) {
-    res.status(403).json({
-        msg: "Invalid token"
-    });
+    console.log(token)
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    return true;
+  } catch(e) {
+    console.log(e);
+    return false;
   }
 };
 
