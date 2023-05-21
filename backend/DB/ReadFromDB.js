@@ -12,6 +12,7 @@ async function customerExists(email) {
 
 async function loginUser(email, pwd) {
     const data = await customerModel.findOne({email})
+    if(!data) return {exists: false}
 
     if(data.password === pwd) {
         // Send JWT access token
@@ -19,7 +20,7 @@ async function loginUser(email, pwd) {
             { email },
             process.env.ACCESS_TOKEN_SECRET,
             {
-            expiresIn: "10s",
+            expiresIn: "15m",
             }
         );
 
@@ -31,11 +32,11 @@ async function loginUser(email, pwd) {
             expiresIn: "1m",
             }
         );
-            console.log(refreshToken)
+
         await customerModel.updateOne({email}, { $set: {"refreshToken": refreshToken}})
-        return true
+        return {exists: true, authenticated: true, accessToken}
     } 
-    return false;
+    return {exists: false, authenticated: false};
 }
 
 module.exports = {customerExists, loginUser}

@@ -100,13 +100,14 @@ export default function Login() {
           if(!res.data.exists) {
             alert("Account with that username doesnt exist")
           } else {
-            if(res.data.rightCredentials) {
+            if(res.data.authenticated) {
               alert("Right credentials")
             } else {
               alert("Email and password not matching")
             }
           }
         })
+
       })
     }
 
@@ -135,6 +136,8 @@ export default function Login() {
                   <button disabled={
                     !email || !pwd ? true : false
                   } onClick={() => login()}>Login</button>
+                  <button onClick={() => axios.get(`${process.env.REACT_APP_ENDPOINT}/xxxxxx`)}>test cookie</button>
+
                 </div>
               ) : (
                 <div className="tab-panel" value={tabsValue} index={1}>
@@ -145,6 +148,7 @@ export default function Login() {
                   <button className="" disabled={
                     !email || !pwd || !confirmPwd ? true : false
                   } onClick={() => addUser()}>Login</button>
+                  <button onClick={() => axios.get(`${process.env.REACT_APP_ENDPOINT}/xxxxxx`, {withCredentials: true})}>test cookie</button>
                 </div>      
               )
             }
